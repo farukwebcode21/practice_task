@@ -1,16 +1,22 @@
-import { signInWithPopup } from "firebase/auth";
 import React from "react";
-import { auth, googleProvider } from "../../firebase/firebase.config";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
 
 const GoogleLogin = () => {
+  const { googleLogin } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const handleGoogleSignIn = async () => {
+    setLoading(true);
+    setError(null);
     try {
-      await signInWithPopup(auth, googleProvider);
-      toast.success("Login Successfull!");
+      await googleLogin();
+      alert("Login Successfully");
     } catch (error) {
-      toast.error("Login failed. Please try again");
+      setError("Failed to sign in with google . Please try again");
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -18,9 +24,13 @@ const GoogleLogin = () => {
       <button
         onClick={handleGoogleSignIn}
         className="btn bg-orange-700 rounded-full px-5 w-full"
+        disabled={loading}
+        aria-busy={loading}
+        aria-disabled={loading}
       >
-        GoogleLogin
+        {loading ? "Signing in..." : "Google Login"}
       </button>
+      {error && <p className="text-red-600 mt-2">{error}</p>}
     </div>
   );
 };

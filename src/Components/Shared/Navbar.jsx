@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -49,19 +52,24 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end flex gap-4">
-        <div>
-          <Link to={"/login"} className="btn">
-            Login
-          </Link>
-        </div>
-        <div>
-          <Link to={"/registation"} className="btn">
-            Registration
-          </Link>
-        </div>
-        <div>
-          <button className="btn rounded-full">Name:</button>
-        </div>
+        {!user ? (
+          <>
+            <Link to="/login" className="btn">
+              Login
+            </Link>
+            <Link to="/registration" className="btn">
+              Registration
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/dashboard">Dashboard</Link>
+            <button onClick={logOut} className="btn rounded-full py-2 px-6">
+              Logout
+            </button>
+            <span className="btn rounded-full">{user.displayName}</span>
+          </>
+        )}
       </div>
     </div>
   );
