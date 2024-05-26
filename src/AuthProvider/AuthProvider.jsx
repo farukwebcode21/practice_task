@@ -1,5 +1,10 @@
 import React from "react";
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
 import { createContext } from "react";
 import auth from "../firebase/firebase.config";
 import PropTypes from "prop-types";
@@ -12,6 +17,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   const googleLogin = async () => {
     try {
@@ -19,6 +25,15 @@ const AuthProvider = ({ children }) => {
       setUser(result.user);
     } catch (error) {
       console.error("Google login error:", error);
+    }
+  };
+
+  const githubLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, githubProvider);
+      setUser(result.user);
+    } catch (error) {
+      console.log("Github login error:", error);
     }
   };
 
@@ -37,7 +52,7 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  const authInfo = { googleLogin, user, logOut };
+  const authInfo = { googleLogin, user, logOut, githubLogin };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

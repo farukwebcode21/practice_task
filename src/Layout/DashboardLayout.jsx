@@ -1,8 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const DashboardLayout = () => {
+  const { logOut } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/");
+    } catch (error) {
+      console.log("Logout error:", error);
+    }
+  };
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -35,7 +47,9 @@ const DashboardLayout = () => {
             </li>
           </div>
           <div className="bg-red-600  rounded-full text-center hover:bg-black">
-            <button className=" py-3 text-base">Logout</button>
+            <button onClick={handleLogout} className=" py-3 text-base">
+              Logout
+            </button>
           </div>
         </ul>
       </div>
