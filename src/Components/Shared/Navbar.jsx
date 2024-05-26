@@ -59,6 +59,9 @@ const Navbar = () => {
             Registration
           </Link>
         </div>
+        <div>
+          <button className="btn rounded-full">Name:</button>
+        </div>
       </div>
     </div>
   );

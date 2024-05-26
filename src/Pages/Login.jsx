@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import GoogleLogin from "../Components/Auth/GoogleLogin";
+import GithubLogin from "../Components/Auth/GithubLogin";
 
 const Login = () => {
   return (
@@ -57,7 +59,8 @@ const Login = () => {
             </form>
             <div className="  w-full ">
               <div className="flex flex-col gap-2 mx-7 mb-7">
-                {/* <GoogleLogin /> */}
+                <GoogleLogin />
+                <GithubLogin />
               </div>
             </div>
           </div>

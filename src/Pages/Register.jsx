@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import GoogleLogin from "../Components/Auth/GoogleLogin";
+import GithubLogin from "../Components/Auth/GithubLogin";
 
 const Register = () => {
   const handleSubmit = () => {};
@@ -40,8 +42,20 @@ const Register = () => {
                 required
               />
             </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Confirm Password</span>
+              </label>
+              <input
+                type="password"
+                name="confirm password"
+                placeholder="confirm password"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control mt-2">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-primary">Registation</button>
               <p className="text-center">
                 Already have an account ?{" "}
                 <Link to={"/login"} className="text-orange-500">
@@ -51,8 +65,9 @@ const Register = () => {
             </div>
           </form>
           <div className="w-full ">
-            <div className="flex flex-col gap-2 mx-7 mb-7">
-              {/* <GoogleLogin /> */}
+            <div className="flex flex-col justify-evenly gap-2 mx-7 mb-7">
+              <GoogleLogin />
+              <GithubLogin />
             </div>
           </div>
         </div>
