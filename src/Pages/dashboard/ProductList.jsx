@@ -8,12 +8,13 @@ const ProductList = () => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Image & Title</th>
+            <th>Image</th>
+            <th>Title</th>
             <th>Brand</th>
+            <th>Price</th>
             <th>Description</th>
             <th>Delete</th>
-            <th>Remove</th>
-            <th>Edit</th>
+            <th>Update</th>
           </tr>
         </thead>
         <tbody>
@@ -30,29 +31,23 @@ const ProductList = () => {
                     />
                   </div>
                 </div>
-                <div>
-                  <div className="font-bold">Hart Hagerty</div>
-                  <div className="text-sm opacity-50">United States</div>
-                </div>
               </div>
             </td>
-            <td>Zemlak, Daniel and Leannon</td>
-            <td>Purple</td>
+            <td>Omega Seamaster</td>
+            <td>Omega</td>
+            <td>$5000</td>
+            <td>
+              The Omega Seamaster is a luxurious diving watch with impeccable
+              design and functionality
+            </td>
             <th>
-              <button className="btn btn-ghost btn-xs">details</button>
+              <button className="btn btn-ghost btn-xs">Delete</button>
+            </th>
+            <th>
+              <button className="btn btn-ghost btn-xs">Update</button>
             </th>
           </tr>
         </tbody>
-        {/* foot */}
-        <tfoot>
-          <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
-            <th></th>
-          </tr>
-        </tfoot>
       </table>
     </div>
   );

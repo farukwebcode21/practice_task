@@ -64,10 +64,15 @@ const Navbar = () => {
         ) : (
           <>
             <Link to="/dashboard">Dashboard</Link>
-            <button onClick={logOut} className="btn rounded-full py-2 px-6">
+            <button
+              onClick={logOut}
+              className="btn rounded-full py-2 px-6 bg-red-700"
+            >
               Logout
             </button>
-            <span className="btn rounded-full">{user.displayName}</span>
+            <span className="btn rounded-full bg-success text-black capitalize">
+              {user.displayName}
+            </span>
           </>
         )}
       </div>

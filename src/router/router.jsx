@@ -9,6 +9,7 @@ import Register from "../Pages/Register";
 import PrivateRoute from "./PrivateRoute";
 import ProductList from "../Pages/dashboard/ProductList";
 import AddProduct from "../Pages/dashboard/AddProduct";
+import ProductsDetails from "../Pages/ProductsDetails";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,12 @@ const router = createBrowserRouter([
         path: "product",
         element: <Products />,
         loader: () => fetch("http://localhost:3000/watch"),
+      },
+      {
+        path: "product/:id",
+        element: <ProductsDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/watch/${params.id}`),
       },
       {
         path: "login",
