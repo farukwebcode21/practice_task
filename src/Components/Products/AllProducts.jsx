@@ -1,22 +1,22 @@
 import React from "react";
-import SingleProduct from "./SingleProduct";
+import SingleProduct from "../Home/SingleProduct";
 import PropTypes from "prop-types";
 
-const ProductCard = ({ watchs }) => {
+const AllProducts = ({ watchs }) => {
   return (
     <div className="justify-center py-3">
-      <h1 className="text-center uppercase text-3xl font-bold underline">
+      <h1 className="text-center uppercase text-3xl mt-10 mb-7 font-bold underline">
         Popular Product
       </h1>
       <div className="grid grid-cols-3 justify-center my-4 space-x-4">
-        {watchs.slice(0, 3).map((watch) => (
+        {watchs.map((watch) => (
           <SingleProduct key={watch.id} watch={watch} />
         ))}
       </div>
     </div>
   );
 };
-ProductCard.propTypes = {
+AllProducts.propTypes = {
   watchs: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -29,4 +29,4 @@ ProductCard.propTypes = {
   ).isRequired,
 };
 
-export default ProductCard;
+export default AllProducts;

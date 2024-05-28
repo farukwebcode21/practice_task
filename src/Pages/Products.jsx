@@ -1,10 +1,13 @@
 import React from "react";
-import ProductCard from "../Components/Home/ProductCard";
+import { useLoaderData } from "react-router-dom";
+import AllProducts from "../Components/Products/AllProducts";
 
 const Products = () => {
+  const watchs = useLoaderData();
+
   return (
     <div>
-      <ProductCard />
+      <AllProducts watchs={watchs} />
     </div>
   );
 };
