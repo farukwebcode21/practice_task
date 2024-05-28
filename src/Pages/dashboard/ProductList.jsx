@@ -1,10 +1,22 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const ProductList = () => {
+  const [watches, setWatches] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/watch")
+      .then((res) => res.json())
+      .then((data) => setWatches(data))
+      .catch((error) => console.log("Error fetching data:", error));
+  }, []);
+
+  console.log(watches);
+
   return (
     <div className="overflow-x-auto w-full">
       <table className="table">
-        {/* head */}
         <thead>
           <tr>
             <th>Id</th>
@@ -18,35 +30,38 @@ const ProductList = () => {
           </tr>
         </thead>
         <tbody>
-          {/* row 1 */}
-          <tr>
-            <th>1</th>
-            <td>
-              <div className="flex items-center gap-3">
-                <div className="avatar">
-                  <div className="mask mask-squircle w-12 h-12">
-                    <img
-                      src="https://i.ibb.co/thYTSYN/Screenshot-from-2024-05-28-16-50-14.png"
-                      alt="Avatar Tailwind CSS Component"
-                    />
+          {watches.map((watch) => (
+            <tr key={watch.id}>
+              <th>{watch.id}</th>
+              <td>
+                <div className="flex items-center gap-3">
+                  <div className="avatar">
+                    <div className="mask mask-squircle w-12 h-12">
+                      <img src={watch.image_url} alt={watch.title} />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </td>
-            <td>Omega Seamaster</td>
-            <td>Omega</td>
-            <td>$5000</td>
-            <td>
-              The Omega Seamaster is a luxurious diving watch with impeccable
-              design and functionality
-            </td>
-            <th>
-              <button className="btn btn-ghost btn-xs">Delete</button>
-            </th>
-            <th>
-              <button className="btn btn-ghost btn-xs">Update</button>
-            </th>
-          </tr>
+              </td>
+              <td>{watch.title}</td>
+              <td>{watch.brand}</td>
+              <td>${watch.price}</td>
+              <td>
+                {watch.description.length > 50
+                  ? `${watch.description.substring(0, 50)}...`
+                  : watch.description}
+              </td>
+              <th>
+                <button className="btn btn-xs btn-outline btn-error">
+                  Delete
+                </button>
+              </th>
+              <th>
+                <button className="btn btn-xs btn-outline btn-success">
+                  Update
+                </button>
+              </th>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
