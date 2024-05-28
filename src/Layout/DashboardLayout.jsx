@@ -40,10 +40,10 @@ const DashboardLayout = () => {
               <Link to={"/"}>Home</Link>
             </li>
             <li>
-              <a href="">Product List</a>
+              <Link to="/dashboard/product-list">Product List</Link>
             </li>
             <li>
-              <a>Add Product</a>
+              <Link to="/dashboard/add-product">Add Product</Link>
             </li>
           </div>
           <div className="bg-red-600  rounded-full text-center hover:bg-black">
