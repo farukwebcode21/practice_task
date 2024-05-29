@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ProductList = () => {
   const [watches, setWatches] = useState([]);
@@ -12,7 +13,20 @@ const ProductList = () => {
       .catch((error) => console.log("Error fetching data:", error));
   }, []);
 
-  console.log(watches);
+  const handleDelete = (id) => {
+    fetch(`http://localhost:3000/watch/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (res.ok) {
+          // Update the state to remove the deleted watch
+          setWatches(watches.filter((watch) => watch.id !== id));
+        } else {
+          console.log("Failed to delete the watch");
+        }
+      })
+      .catch((error) => console.log("Error deleting data:", error));
+  };
 
   return (
     <div className="overflow-x-auto w-full">
@@ -51,13 +65,16 @@ const ProductList = () => {
                   : watch.description}
               </td>
               <th>
-                <button className="btn btn-xs btn-outline btn-error">
-                  Delete
+                <button className="btn btn-xs btn-outline btn-success">
+                  <Link to={`/product/${watch.id}`}>Update</Link>
                 </button>
               </th>
               <th>
-                <button className="btn btn-xs btn-outline btn-success">
-                  Update
+                <button
+                  onClick={() => handleDelete(watch.id)}
+                  className="btn btn-xs btn-outline btn-error"
+                >
+                  Delete
                 </button>
               </th>
             </tr>

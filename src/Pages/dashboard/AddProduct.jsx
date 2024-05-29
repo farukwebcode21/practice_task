@@ -1,8 +1,13 @@
 import React from "react";
+import { useState } from "react";
+import { ClipLoader } from "react-spinners";
 
 const AddProduct = () => {
+  const [loading, setLoading] = useState(false);
+
   const handleAddProduct = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     // Retrieve form data using FormData
     const formData = new FormData(event.target);
@@ -32,6 +37,8 @@ const AddProduct = () => {
       event.target.reset();
     } catch (error) {
       console.log("Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -121,6 +128,11 @@ const AddProduct = () => {
           </form>
         </div>
       </div>
+      {loading && (
+        <div className="flex justify-center items-center">
+          <ClipLoader color={"#123abc"} loading={loading} size={150} />
+        </div>
+      )}
     </div>
   );
 };

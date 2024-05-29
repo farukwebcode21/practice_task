@@ -9,6 +9,7 @@ const Home = () => {
   return (
     <div>
       <Banner />
+
       <ProductCard watchs={watchs} />
     </div>
   );
