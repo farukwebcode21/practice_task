@@ -79,6 +79,14 @@
       "brand": "Panerai",
       "image_url": "https://i.ibb.co/NrCPZkK/Screenshot-from-2024-05-28-16-51-09.png",
       "description": "Panerai Luminor is a robust and stylish watch with a distinctive crown-protecting bridge."
+    },
+    {
+      "id": "11",
+      "title": "Smart Watch",
+      "brand": "Walton Primo",
+      "price": 250,
+      "description": "Walton Smart watch new version primo",
+      "image_url": "https://img.freepik.com/free-psd/smartwatch-realistic-isolated-transparent-background_84443-1812.jpg?w=740&t=st=1716945505~exp=1716946105~hmac=be375883237b52acf6574e60e9bc11e4dcf2c494cca3ca34b9b6faabfa81efb4"
     }
   ]
 }
