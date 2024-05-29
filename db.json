@@ -3,18 +3,18 @@
     {
       "id": "1",
       "title": "Omega Seamaster",
-      "price": 5000,
       "brand": "Omega",
-      "image_url": "https://i.ibb.co/thYTSYN/Screenshot-from-2024-05-28-16-50-14.png",
-      "description": "The Omega Seamaster is a luxurious diving watch with impeccable design and functionality."
+      "price": "200",
+      "description": "The Omega Seamaster is a luxurious diving watch with impeccable design and functionality.",
+      "image_url": "https://i.ibb.co/thYTSYN/Screenshot-from-2024-05-28-16-50-14.png"
     },
     {
-      "id": "2",
       "title": "Rolex Submariner",
-      "price": 8000,
       "brand": "Rolex",
+      "price": 8000,
+      "description": "Rolex Submariner is an iconic diving watch known for its robustness and timeless design.",
       "image_url": "https://i.ibb.co/84h1D0c/Screenshot-from-2024-05-28-16-50-20.png",
-      "description": "Rolex Submariner is an iconic diving watch known for its robustness and timeless design."
+      "id": "2"
     },
     {
       "id": "3",
@@ -34,11 +34,11 @@
     },
     {
       "id": "5",
-      "title": "Audemars Piguet Royal Oak",
-      "price": 2500,
+      "title": "Audemars ",
       "brand": "Audemars Piguet",
-      "image_url": "https://i.ibb.co/D4DXvgw/Screenshot-from-2024-05-28-16-50-36.png",
-      "description": "Audemars Piguet Royal Oak is a high-end luxury watch known for its distinctive octagonal bezel."
+      "price": "100",
+      "description": "Audemars Piguet Royal Oak is a high-end luxury watch known for its distinctive octagonal bezel.",
+      "image_url": "https://i.ibb.co/D4DXvgw/Screenshot-from-2024-05-28-16-50-36.png"
     },
     {
       "id": "6",

@@ -66,7 +66,7 @@ const ProductList = () => {
               </td>
               <th>
                 <button className="btn btn-xs btn-outline btn-success">
-                  <Link to={`/product/${watch.id}`}>Update</Link>
+                  <Link to={`/dashboard/edit-product/${watch.id}`}>Update</Link>
                 </button>
               </th>
               <th>
