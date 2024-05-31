@@ -12,7 +12,7 @@ const AddProduct = () => {
     // Retrieve form data using FormData
     const formData = new FormData(event.target);
     const productData = {
-      id: formData.get("id"),
+      // id: formData.get("id"),
       title: formData.get("title"),
       brand: formData.get("brand"),
       price: parseInt(formData.get("number"), 10),
@@ -21,7 +21,7 @@ const AddProduct = () => {
     };
     // You can now use productData to send to your backend or perform further actions
     try {
-      const response = await fetch("http://localhost:3000/watch", {
+      const response = await fetch("http://localhost:3001/watch", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,11 +34,10 @@ const AddProduct = () => {
       const result = await response.json();
       alert("SuccessFull Added data", result);
       // reset successful submission
+      console.log(result);
       event.target.reset();
     } catch (error) {
       console.log("Error:", error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -48,18 +47,6 @@ const AddProduct = () => {
       <div className="w-10/12 mx-auto">
         <div className="">
           <form onSubmit={handleAddProduct}>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">ID</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Id"
-                name="id"
-                className="input w-full input-bordered"
-                required
-              />
-            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Title</span>

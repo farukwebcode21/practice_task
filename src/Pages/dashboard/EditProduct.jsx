@@ -6,9 +6,9 @@ import { useParams } from "react-router-dom";
 
 const EditProduct = () => {
   const { id } = useParams();
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    id: "",
     title: "",
     brand: "",
     price: "",
@@ -16,12 +16,12 @@ const EditProduct = () => {
     image_url: "",
   });
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    fetch(`http://localhost:3000/watch/${id}`)
+    fetch(`http://localhost:3001/watch/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setFormData({
-          id: data.id,
           title: data.title,
           brand: data.brand,
           price: data.price,
@@ -36,9 +36,9 @@ const EditProduct = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/watch/${id}`, {
+    await fetch(`http://localhost:3001/watch/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -60,18 +60,6 @@ const EditProduct = () => {
       <div className="w-10/12 mx-auto">
         <div className="">
           <form onSubmit={handleSubmit}>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">ID</span>
-              </label>
-              <input
-                type="text"
-                name="id"
-                value={formData.id}
-                className="input w-full input-bordered"
-                readOnly
-              />
-            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Title</span>

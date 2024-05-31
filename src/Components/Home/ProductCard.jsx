@@ -10,7 +10,7 @@ const ProductCard = ({ watchs }) => {
       </h1>
       <div className="grid grid-cols-3 justify-center my-4 space-x-4">
         {watchs.slice(0, 3).map((watch) => (
-          <SingleProduct key={watch.id} watch={watch} />
+          <SingleProduct key={watch._id} watch={watch} />
         ))}
       </div>
     </div>
@@ -19,7 +19,7 @@ const ProductCard = ({ watchs }) => {
 ProductCard.propTypes = {
   watchs: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      // id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
       brand: PropTypes.string.isRequired,

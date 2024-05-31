@@ -20,18 +20,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:3000/watch"),
+        loader: () => fetch("http://localhost:3001/watch"),
       },
       {
         path: "product",
         element: <Products />,
-        loader: () => fetch("http://localhost:3000/watch"),
+        loader: () => fetch("http://localhost:3001/watch"),
       },
       {
         path: "product/:id",
         element: <ProductsDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/watch/${params.id}`),
+          fetch(`http://localhost:3001/watch/${params.id}`),
       },
       {
         path: "login",
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         path: "edit-product/:id",
         element: <EditProduct />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/watch/${params.id}`),
+          fetch(`http://localhost:3001/watch/${params.id}`),
       },
     ],
   },

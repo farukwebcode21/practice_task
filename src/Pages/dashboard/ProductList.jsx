@@ -7,20 +7,20 @@ const ProductList = () => {
   const [watches, setWatches] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/watch")
+    fetch("http://localhost:3001/watch")
       .then((res) => res.json())
       .then((data) => setWatches(data))
       .catch((error) => console.log("Error fetching data:", error));
   }, []);
 
-  const handleDelete = (id) => {
-    fetch(`http://localhost:3000/watch/${id}`, {
+  const handleDelete = (_id) => {
+    fetch(`http://localhost:3001/watch/${_id}`, {
       method: "DELETE",
     })
       .then((res) => {
         if (res.ok) {
           // Update the state to remove the deleted watch
-          setWatches(watches.filter((watch) => watch.id !== id));
+          setWatches(watches.filter((watch) => watch._id !== _id));
         } else {
           console.log("Failed to delete the watch");
         }
@@ -45,8 +45,8 @@ const ProductList = () => {
         </thead>
         <tbody>
           {watches.map((watch) => (
-            <tr key={watch.id}>
-              <th>{watch.id}</th>
+            <tr key={watch._id}>
+              <th>{watch._id}</th>
               <td>
                 <div className="flex items-center gap-3">
                   <div className="avatar">
@@ -66,12 +66,14 @@ const ProductList = () => {
               </td>
               <th>
                 <button className="btn btn-xs btn-outline btn-success">
-                  <Link to={`/dashboard/edit-product/${watch.id}`}>Update</Link>
+                  <Link to={`/dashboard/edit-product/${watch._id}`}>
+                    Update
+                  </Link>
                 </button>
               </th>
               <th>
                 <button
-                  onClick={() => handleDelete(watch.id)}
+                  onClick={() => handleDelete(watch._id)}
                   className="btn btn-xs btn-outline btn-error"
                 >
                   Delete

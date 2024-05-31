@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const SingleProduct = ({ watch }) => {
-  const { id, title, brand, price, image_url, description } = watch;
+  const { _id, title, brand, price, image_url, description } = watch;
   return (
     <div>
       <div>
@@ -19,7 +19,7 @@ const SingleProduct = ({ watch }) => {
             <p>{description.slice(0, 30)}</p>
             <div className="card-actions justify-between">
               <Link
-                to={`/product/${id}`}
+                to={`/product/${_id}`}
                 className="badge badge-primary cursor-pointer px-5 py-3 hover:badge-success"
               >
                 See Details
@@ -37,7 +37,7 @@ const SingleProduct = ({ watch }) => {
 };
 SingleProduct.propTypes = {
   watch: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     brand: PropTypes.string.isRequired,
